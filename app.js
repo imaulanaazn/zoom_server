@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
-const session = require("express-session");
+// const session = require("express-session");
 const methodOverride = require("method-override");
 const dotenv = require("dotenv");
 
@@ -22,14 +22,14 @@ app.use(cors());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {},
-  })
-);
+// app.use(
+//   session({
+//     secret: "keyboard cat",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {},
+//   })
+// );
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(bodyParser.json());
