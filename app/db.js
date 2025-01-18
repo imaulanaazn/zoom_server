@@ -1,11 +1,9 @@
+require("dotenv").config();
 const mysql = require("mysql2");
 
-const db = mysql.createConnection({
-  host: "mysql-production-9e40.up.railway.app",
-  user: "root",
-  password: "dmRZcdLCZxnWsuGStIvQuBjSpbOMhtxZ",
-  database: "railway",
-});
+const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`;
+
+const db = mysql.createConnection(process.env.MYSQL_PUBLIC_URL);
 
 // Cek koneksi
 db.connect((err) => {
@@ -17,13 +15,3 @@ db.connect((err) => {
 });
 
 module.exports = db;
-
-// MYSQL_DATABASE=railway
-// MYSQL_PUBLIC_URL=mysql://root:SoCMrgGCFLOxZtixBkaIaxAnOfXHIPIC@autorack.proxy.rlwy.net:27342/railway
-// MYSQL_ROOT_PASSWORD=SoCMrgGCFLOxZtixBkaIaxAnOfXHIPIC
-// MYSQL_URL=mysql://root:SoCMrgGCFLOxZtixBkaIaxAnOfXHIPIC@mysql.railway.internal:3306/railway
-// MYSQLDATABASE=railway
-// MYSQLHOST=mysql.railway.internal
-// MYSQLPASSWORD=SoCMrgGCFLOxZtixBkaIaxAnOfXHIPIC
-// MYSQLPORT=3306
-// MYSQLUSER=root
