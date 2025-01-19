@@ -62,7 +62,7 @@ module.exports = {
         body: new URLSearchParams({
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: "http://localhost:3000/redirect",
+          redirect_uri: "https://convin-online.vercel.app/redirect",
         }),
       });
 
